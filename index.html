@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google Maps GLB Konfigurator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
+    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Google Maps GLB Konfigurator</h1>
+      <p>
+        Lade bis zu drei GLB-Modelle hoch und positioniere sie auf der Karte. Klicke
+        auf die Karte, um das ausgewählte Modell zu verschieben.
+      </p>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Modelle</h2>
+        <div class="upload-grid">
+          <label>
+            Modell 1
+            <input type="file" id="model-input-1" accept=".glb" />
+          </label>
+          <label>
+            Modell 2
+            <input type="file" id="model-input-2" accept=".glb" />
+          </label>
+          <label>
+            Modell 3
+            <input type="file" id="model-input-3" accept=".glb" />
+          </label>
+        </div>
+
+        <div class="controls">
+          <label>
+            Aktives Modell
+            <select id="active-model">
+              <option value="0">Modell 1</option>
+              <option value="1">Modell 2</option>
+              <option value="2">Modell 3</option>
+            </select>
+          </label>
+
+          <div class="position-controls">
+            <button data-move="north">Norden</button>
+            <div>
+              <button data-move="west">Westen</button>
+              <button data-move="east">Osten</button>
+            </div>
+            <button data-move="south">Süden</button>
+          </div>
+
+          <label>
+            Schrittweite (Meter)
+            <input id="step-size" type="number" value="5" min="1" />
+          </label>
+
+          <div class="coords">
+            <label>
+              Latitude
+              <input id="lat-input" type="number" step="0.000001" />
+            </label>
+            <label>
+              Longitude
+              <input id="lng-input" type="number" step="0.000001" />
+            </label>
+            <label>
+              Höhe (Meter)
+              <input id="alt-input" type="number" step="1" value="0" />
+            </label>
+            <button id="apply-coords">Koordinaten setzen</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-container">
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        API-Key eintragen: Ersetze <code>YOUR_GOOGLE_MAPS_API_KEY</code> in der
+        Google-Maps-Skript-URL in <code>index.html</code>.
+      </p>
+    </footer>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&v=beta"
+      defer
+    ></script>
+  </body>
+</html>
